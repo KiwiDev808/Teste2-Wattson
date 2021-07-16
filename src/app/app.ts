@@ -8,21 +8,23 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+app.use(express.static('build'))
+
 app.use('/static', express.static(process.cwd() + '/static'))
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/api', (req: Request, res: Response) => {
   return res.send({ message: 'Teste' })
 })
 
-app.get('/comment', (req: Request, res: Response) => {
+app.get('/api/comment', (req: Request, res: Response) => {
   return getCommentsController.handle(req, res)
 })
 
-app.post('/comment', (req: Request, res: Response) => {
+app.post('/api/comment', (req: Request, res: Response) => {
   return createCommentController.handle(req, res)
 })
 
-app.delete('/comment/:id', (req: Request, res: Response) => {
+app.delete('/api/comment/:id', (req: Request, res: Response) => {
   return deleteCommentController.handle(req, res)
 })
 
