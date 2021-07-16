@@ -28,7 +28,7 @@ O deploy de aplicação pode ser consultado nesse <a href="https://shielded-cove
 
 - [x] Conversão de texto para voz
 - [x] ReadME
-- [] Testes Unitários
+- [ ] Testes Unitários
 
 ## 🚀 Instalação
 
