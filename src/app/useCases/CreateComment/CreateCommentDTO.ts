@@ -1,8 +1,8 @@
-export interface ICommentPostRequestDTO {
+export interface ICreateCommentRequestDTO {
   description: string
   baseUrl: string
 }
 
-export interface ICommentPostResponseDTO {
+export interface ICreateCommentResponseDTO {
   message: string
 }

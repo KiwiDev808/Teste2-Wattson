@@ -1,16 +1,20 @@
-import { MySqlCommentsRepository } from '../../../repositories/implementations/MySqlCommentsRepository'
+import { textSynthesizer } from '../../Entities/Synthetizer'
+import { MysqlCommentsRepository } from '../../Repositories/Implementations/MysqlComentsRepository'
+import { IdGenerator } from '../../services/idGenerator'
 import { CreateCommentController } from './CreateCommentController'
-import { CommentPostUseCase } from './CreateCommentUseCase'
-import { CommentPostValidator } from './CreateCommentValidator'
+import { CreateCommentUseCase } from './CreateCommentUseCase'
 
-const mysqlCommentsRepository = new MySqlCommentsRepository()
-const commentPostValidator = new CommentPostValidator()
+const mysqlCommentsRepository = new MysqlCommentsRepository()
+const idGenerator = new IdGenerator()
 
-const CommentPostsUseCase = new CommentPostUseCase(
+const createCommentUseCase = new CreateCommentUseCase(
   mysqlCommentsRepository,
-  commentPostValidator
+  textSynthesizer,
+  idGenerator
 )
 
-const commentPostController = new CreateCommentController(CommentPostsUseCase)
+const createCommentController = new CreateCommentController(
+  createCommentUseCase
+)
 
-export { CommentPostsUseCase, commentPostController }
+export { createCommentUseCase, createCommentController }

@@ -5,23 +5,23 @@ import { Synthesizer } from '../../Entities/Synthetizer'
 import { ICommentsRepository } from '../../Repositories/ICommentsRepository'
 import { IdGenerator } from '../../services/idGenerator'
 import {
-  ICommentPostRequestDTO,
-  ICommentPostResponseDTO,
+  ICreateCommentRequestDTO,
+  ICreateCommentResponseDTO,
 } from './CreateCommentDTO'
 
-export class CommentPostUseCase {
+export class CreateCommentUseCase {
   constructor(
     private commentsRepository: ICommentsRepository,
     private textSynthesizer: Synthesizer,
     private idGenerator: IdGenerator
   ) {}
   async execute(
-    data: ICommentPostRequestDTO
-  ): Promise<ICommentPostResponseDTO> {
+    data: ICreateCommentRequestDTO
+  ): Promise<ICreateCommentResponseDTO> {
     const fileName = `${Date.now()}.wav`
     const audioBuffer = await this.textSynthesizer.synthesize(data.description)
     fs.writeFileSync(
-      path.join(process.cwd(), '../../../static/', fileName),
+      path.join(process.cwd(), '/static/') + fileName,
       audioBuffer
     )
 

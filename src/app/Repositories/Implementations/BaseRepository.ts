@@ -6,7 +6,7 @@ import {
   DB_PORT,
   DB_SCHEMA,
   DB_USER,
-} from '../../config/database'
+} from '../../../config/database'
 
 dotenv.config()
 

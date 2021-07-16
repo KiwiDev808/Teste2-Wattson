@@ -13,7 +13,7 @@ module.exports = {
       multipleStatements: true,
     },
     migrations: {
-      tableName: 'knex_migrations',
+      tableName: 'test2_watson_lucas_bacelar',
       directory: `${__dirname}/src/database/migrations`,
     },
   },

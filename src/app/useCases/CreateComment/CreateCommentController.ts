@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
-import { CommentPostUseCase } from './CreateCommentUseCase'
+import { CreateCommentUseCase } from './CreateCommentUseCase'
 
 export class CreateCommentController {
-  constructor(private CreateCommentUseCase: CommentPostUseCase) {}
+  constructor(private CreateCommentUseCase: CreateCommentUseCase) {}
   async handle(req: Request, res: Response): Promise<Response | void> {
     const { description } = req.body
     const baseUrl = `${req.protocol}://${req.get('host')}`

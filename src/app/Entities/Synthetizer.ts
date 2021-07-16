@@ -1,14 +1,8 @@
 import * as TextToSpeechV1 from 'ibm-watson/text-to-speech/v1'
 import { Response } from 'ibm-watson/text-to-speech/v1-generated'
-import { credentials } from '../config/textToSpeech'
+import { credentials } from '../../config/textToSpeech'
 
 const textToSpeech = new TextToSpeechV1.default(credentials)
-
-const synthesizeParams = {
-  text: 'Olá mundo meu nome é lucas',
-  accept: 'audio/wav',
-  voice: 'pt-BR_IsabelaV3Voice',
-}
 
 export class Synthesizer {
   constructor(private textToSpeech: TextToSpeechV1) {}
@@ -27,3 +21,5 @@ export class Synthesizer {
       })
   }
 }
+
+export const textSynthesizer = new Synthesizer(textToSpeech)
