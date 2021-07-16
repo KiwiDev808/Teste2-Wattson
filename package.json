@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "15.x",
+    "yarn": "1.x"
+  },
   "scripts": {
     "migrations": "npx knex migrate:latest",
     "build": "tsc",
-    "start": "ts-node src/app/server.ts",
+    "start": "node ./dist/src/app/server.js",
     "dev": "ts-node-dev src/app/server.ts",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "git add . && git commit -m Heroku && git push heroku main"
   },
   "keywords": [],
   "author": "",
