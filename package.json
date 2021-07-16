@@ -9,7 +9,7 @@
   },
   "scripts": {
     "migrations": "npx knex migrate:latest",
-    "build": "tsc",
+    "build": "tsc && mkdir static",
     "start": "node ./dist/src/app/server.js",
     "dev": "ts-node-dev src/app/server.ts",
     "test": "jest",
