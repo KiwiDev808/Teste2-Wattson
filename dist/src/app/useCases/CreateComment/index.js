@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createCommentController = exports.createCommentUseCase = void 0;
+const Synthetizer_1 = require("../../Entities/Synthetizer");
+const MysqlComentsRepository_1 = require("../../Repositories/Implementations/MysqlComentsRepository");
+const idGenerator_1 = require("../../services/idGenerator");
+const CreateCommentController_1 = require("./CreateCommentController");
+const CreateCommentUseCase_1 = require("./CreateCommentUseCase");
+const mysqlCommentsRepository = new MysqlComentsRepository_1.MysqlCommentsRepository();
+const idGenerator = new idGenerator_1.IdGenerator();
+const createCommentUseCase = new CreateCommentUseCase_1.CreateCommentUseCase(mysqlCommentsRepository, Synthetizer_1.textSynthesizer, idGenerator);
+exports.createCommentUseCase = createCommentUseCase;
+const createCommentController = new CreateCommentController_1.CreateCommentController(createCommentUseCase);
+exports.createCommentController = createCommentController;

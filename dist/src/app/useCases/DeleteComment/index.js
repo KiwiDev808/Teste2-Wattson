@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.deleteCommentController = exports.deleteCommentUseCase = void 0;
+const MysqlComentsRepository_1 = require("../../Repositories/Implementations/MysqlComentsRepository");
+const DeleteCommentController_1 = require("./DeleteCommentController");
+const DeleteCommentUseCase_1 = require("./DeleteCommentUseCase");
+const mysqlCommentsRepository = new MysqlComentsRepository_1.MysqlCommentsRepository();
+const deleteCommentUseCase = new DeleteCommentUseCase_1.DeleteCommentUseCase(mysqlCommentsRepository);
+exports.deleteCommentUseCase = deleteCommentUseCase;
+const deleteCommentController = new DeleteCommentController_1.DeleteCommentController(deleteCommentUseCase);
+exports.deleteCommentController = deleteCommentController;
