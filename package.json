@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "migrations": "npx knex migrate:latest",
+    "build": "tsc",
     "start": "ts-node src/index.ts",
     "dev": "ts-node-dev src/index.ts",
     "test": "jest"
@@ -28,6 +30,7 @@
     "express": "^4.17.1",
     "ibm-watson": "^6.1.1",
     "knex": "^0.95.7",
+    "mysql": "^2.18.1",
     "uuid": "^8.3.2"
   }
 }
