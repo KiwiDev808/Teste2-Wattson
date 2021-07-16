@@ -18,19 +18,20 @@ export class CreateCommentUseCase {
   async execute(
     data: ICreateCommentRequestDTO
   ): Promise<ICreateCommentResponseDTO> {
-    const fileName = `${Date.now()}.wav`
     const audioBuffer = await this.textSynthesizer.synthesize(data.description)
+    const commentId = this.idGenerator.generate()
+    const fileName = `${Date.now()}-${commentId}.wav`
+
     fs.writeFileSync(
       path.join(process.cwd(), '/static/') + fileName,
       audioBuffer
     )
 
-    const commentId = this.idGenerator.generate()
-
     const comment = new Comment(
       {
         audio: `${data.baseUrl}/static/${fileName}`,
         description: data.description,
+        filename: fileName,
       },
       commentId
     )
