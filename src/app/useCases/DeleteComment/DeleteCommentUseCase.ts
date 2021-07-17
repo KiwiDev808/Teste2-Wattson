@@ -15,7 +15,11 @@ export class DeleteCommentUseCase {
       throw new Error('Comment not found')
     }
 
-    fs.unlinkSync(`${process.cwd()}/static/${dbComment.filename}`)
+    const filePath = `${process.cwd()}/static/${dbComment.filename}`
+
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(`${process.cwd()}/static/${dbComment.filename}`)
+    }
 
     await this.commentsRepository.delete(dbComment.id)
 

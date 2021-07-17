@@ -8,7 +8,7 @@ export class GetCommentsController {
     try {
       const response = await this.getCommentsUseCase.execute()
 
-      return res.status(201).send(response)
+      return res.status(200).send(response)
     } catch (err) {
       if (err instanceof APIError) {
         return res.status(err.code).send({ message: err.message })

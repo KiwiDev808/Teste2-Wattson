@@ -5,9 +5,8 @@ import { DeleteCommentUseCase } from './DeleteCommentUseCase'
 export class DeleteCommentController {
   constructor(private deleteCommentUseCase: DeleteCommentUseCase) {}
   async handle(req: Request, res: Response): Promise<Response | void> {
-    const id = req.params.id
-
     try {
+      const id = req.params.id
       const response = await this.deleteCommentUseCase.execute({ id })
 
       return res.status(204).send(response)

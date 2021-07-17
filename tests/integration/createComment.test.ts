@@ -1,7 +1,7 @@
 import request from 'supertest'
 import { app } from '../../src/app/app'
 import { deleteStaticFiles } from '../utils/deleteStaticFiles'
-import { truncate } from '../utils/truncate'
+import { truncate } from '../utils/helper'
 
 describe('Create Comment', () => {
   beforeEach(async () => {
@@ -9,7 +9,7 @@ describe('Create Comment', () => {
     deleteStaticFiles()
   })
 
-  afterAll(async () => {
+  afterEach(async () => {
     await truncate('test2_watson_comments')
     deleteStaticFiles()
   })
@@ -19,6 +19,7 @@ describe('Create Comment', () => {
       description: 'Olá mundo',
     })
 
+    expect(response.body.message).toBe('Success')
     expect(response.status).toBe(201)
   })
 
@@ -36,13 +37,5 @@ describe('Create Comment', () => {
     })
 
     expect(response.status).toBe(406)
-  })
-
-  it('should return a success message after creating a comment', async () => {
-    const response = await request(app).post('/api/comment').send({
-      description: 'Olá mundo',
-    })
-
-    expect(response.body.message).toBe('Success')
   })
 })
