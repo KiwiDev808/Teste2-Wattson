@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import { APIError } from '../../services/APIError'
 import { GetCommentsUseCase } from './GetCommentsUseCase'
 
 export class GetCommentsController {
@@ -9,7 +10,11 @@ export class GetCommentsController {
 
       return res.status(201).send(response)
     } catch (err) {
-      res.status(400).send({ message: err.message })
+      if (err instanceof APIError) {
+        return res.status(err.code).send({ message: err.message })
+      }
+
+      return res.status(400).send({ message: err.message })
     }
   }
 }

@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import { APIError } from '../../services/APIError'
 import { DeleteCommentUseCase } from './DeleteCommentUseCase'
 
 export class DeleteCommentController {
@@ -11,7 +12,11 @@ export class DeleteCommentController {
 
       return res.status(204).send(response)
     } catch (err) {
-      res.status(400).send({ message: err.message })
+      if (err instanceof APIError) {
+        return res.status(err.code).send({ message: err.message })
+      }
+
+      return res.status(400).send({ message: err.message })
     }
   }
 }

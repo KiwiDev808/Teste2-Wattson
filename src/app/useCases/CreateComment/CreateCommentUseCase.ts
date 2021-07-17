@@ -3,6 +3,7 @@ import path from 'path'
 import { Comment } from '../../Entities/Comment'
 import { Synthesizer } from '../../Entities/Synthesizer'
 import { ICommentsRepository } from '../../Repositories/ICommentsRepository'
+import { APIError } from '../../services/APIError'
 import { IdGenerator } from '../../services/idGenerator'
 import {
   ICreateCommentRequestDTO,
@@ -18,6 +19,10 @@ export class CreateCommentUseCase {
   async execute(
     data: ICreateCommentRequestDTO
   ): Promise<ICreateCommentResponseDTO> {
+    if (!data.description || typeof data.description !== 'string') {
+      throw APIError.wrongParams('Please put a valid description value')
+    }
+
     const audioBuffer = await this.textSynthesizer.synthesize(data.description)
     const commentId = this.idGenerator.generate()
     const fileName = `${Date.now()}-${commentId}.wav`
