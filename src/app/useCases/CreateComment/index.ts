@@ -1,4 +1,4 @@
-import { textSynthesizer } from '../../Entities/Synthetizer'
+import { textSynthesizer } from '../../Entities/Synthesizer'
 import { MysqlCommentsRepository } from '../../Repositories/Implementations/MysqlComentsRepository'
 import { IdGenerator } from '../../services/idGenerator'
 import { CreateCommentController } from './CreateCommentController'

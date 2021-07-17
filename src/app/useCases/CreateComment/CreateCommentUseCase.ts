@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { Comment } from '../../Entities/Comment'
-import { Synthesizer } from '../../Entities/Synthetizer'
+import { Synthesizer } from '../../Entities/Synthesizer'
 import { ICommentsRepository } from '../../Repositories/ICommentsRepository'
 import { IdGenerator } from '../../services/idGenerator'
 import {
