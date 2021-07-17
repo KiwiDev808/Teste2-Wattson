@@ -8,11 +8,15 @@ O deploy de aplicação pode ser consultado nesse <a href="https://shielded-cove
 
 ## ⛏ Tecnologias
 
-- [Node.js](https://www.python.org/)
-- [Express](https://www.docker.com/)
-- [React](https://www.docker.com/)
-- [IBM Watson](https://www.docker.com/)
-- [mySQL](https://www.docker.com/)
+### Frontend
+- [React](https://pt-br.reactjs.org/)
+- [SASS](https://sass-lang.com/)
+
+### Backend
+- [Node.js](https://nodejs.org/en/)
+- [Express](https://expressjs.com/pt-br/)
+- [IBM Watson](https://www.ibm.com/br-pt/watson)
+- [MySQL](https://www.mysql.com/)
 
 ### 📚 Dependências
 
